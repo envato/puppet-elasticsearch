@@ -23,7 +23,8 @@ class elasticsearch::package(
   $javascript_plugin = 'elasticsearch/elasticsearch-lang-javascript/2.1.0'
   $es_plugin_cmd = "${boxen::config::homebrewdir}/bin/plugin"
   exec { "${es_plugin_cmd} --install ${javascript_plugin}":
-    unless => "${es_plugin_cmd} --list | grep javascript"
+    unless => "${es_plugin_cmd} --list | grep javascript",
+    notify => Service['dev.elasticsearch'],
   }
 
 }
