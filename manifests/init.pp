@@ -23,6 +23,7 @@ class elasticsearch(
 ) inherits elasticsearch::params {
 
   include java
+  require homebrew
 
   class { 'elasticsearch::package':
     ensure  => $ensure,
