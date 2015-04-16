@@ -30,6 +30,8 @@ class elasticsearch(
 
     version => $version,
     package => $package,
+
+    notify  => Service['elasticsearch']
   }
 
   ~>
