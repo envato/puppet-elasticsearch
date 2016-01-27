@@ -1,15 +1,12 @@
 class Elasticsearch < Formula
-  homepage "http://www.elasticsearch.org"
-  url "https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.4.2.tar.gz"
-  sha1 "ae381615ec7f657e2a08f1d91758714f13d11693"
-
-  version '1.4.2-boxen1'
-
-  depends_on :java => "1.7+"
+  homepage "http://www.elastic.co"
+  url "https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.1.tar.gz"
+  sha1 "0984ae27624e57c12c33d4a559c3ebae25e74508"
+  version '1.7.1-boxen1'
 
   head do
-    url "https://github.com/elasticsearch/elasticsearch.git"
-    depends_on "maven" => :build
+    url "https://github.com/elastic/elasticsearch.git"
+    depends_on "maven"
   end
 
   def cluster_name
