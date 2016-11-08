@@ -1,7 +1,7 @@
 class Elasticsearch < Formula
   homepage "http://www.elastic.co"
   url "https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.1.tar.gz"
-  sha1 "0984ae27624e57c12c33d4a559c3ebae25e74508"
+  sha256 "86a0c20eea6ef55b14345bff5adf896e6332437b19180c4582a346394abde019"
   version '1.7.1-boxen1'
 
   head do
