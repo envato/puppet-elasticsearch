@@ -39,6 +39,13 @@ class elasticsearch::config(
       content => template('elasticsearch/dev.elasticsearch.plist.erb'),
       group   => 'wheel',
       owner   => 'root' ;
+
+    "${configdir}/log4j2.properties":
+      content => template('elasticsearch/log4j2.properties.erb');
+
+    "${configdir}/jvm.options":
+      content => template('elasticsearch/jvm.options.erb');
+
   }
 
   if $::operatingsystem == 'Darwin' {

@@ -27,7 +27,9 @@ class Elasticsearch < Formula
 
     # Move libraries to `libexec` directory
     libexec.install Dir["lib/*.jar"]
-    (libexec/"sigar").install Dir["lib/sigar/*.{jar,dylib}"]
+
+    # No longer a thing in ES 5?
+    # (libexec/"sigar").install Dir["lib/sigar/*.{jar,dylib}"]
 
     # Install everything else into package directory
     prefix.install Dir["*"]
@@ -42,12 +44,12 @@ class Elasticsearch < Formula
 
     inreplace "#{bin}/elasticsearch.in.sh" do |s|
       # Configure ES_HOME
-      s.sub!(%r{#\!/bin/sh\n}, "#!/bin/sh\n\nES_HOME=#{prefix}")
+      s.sub!(%r{#\!/bin/bash\n}, "#!/bin/bash\n\nES_HOME=#{prefix}")
       # Configure ES_CLASSPATH paths to use libexec instead of lib
       s.gsub!(%r{ES_HOME/lib/}, "ES_HOME/libexec/")
     end
 
-    inreplace "#{bin}/plugin" do |s|
+    inreplace "#{bin}/elasticsearch-plugin" do |s|
       # Add the proper ES_CLASSPATH configuration
       s.sub!(/SCRIPT="\$0"/, %(SCRIPT="$0"\nES_CLASSPATH=#{libexec}))
       # Replace paths to use libexec instead of lib

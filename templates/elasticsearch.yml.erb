@@ -5,15 +5,6 @@ node:
   name: boxen
   max_local_storage_nodes: 1
 
-index:
-  number_of_shards: 1
-  number_of_replicas: 0
-  search:
-    slowlog:
-      threshold:
-        query:
-          trace: 0ms
-
 path:
   conf: <%= @configdir %>/
   data: <%= @datadir %>/
@@ -34,18 +25,9 @@ http:
   max_content_length: 500mb
 
 gateway:
-  type: local
   recover_after_nodes: 1
   expected_nodes: 1
 
-discovery:
-  zen:
-    ping:
-      multicast:
-        enabled: false
-      unicast:
-        hosts:
-          - <%= @host %>:<%= @transport_port %>
-
 script:
-  disable_dynamic: false
+  inline: true
+  stored: true
