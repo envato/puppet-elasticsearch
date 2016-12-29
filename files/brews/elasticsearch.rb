@@ -1,8 +1,8 @@
 class Elasticsearch < Formula
   homepage "http://www.elastic.co"
-  url "https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.0.1.tar.gz"
-  sha256 "542e197485fbcb1aac46097439337d2e9ac6a54b7b1e29ad17761f4d65898833"
-  version '5.0.1-boxen1'
+  url "https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.1.1.tar.gz"
+  sha256 "cd45bafb1f74a7df9bad12c77b7bf3080069266bcbe0b256b0959ef2536e31e8"
+  version '5.1.1-boxen1'
 
   head do
     url "https://github.com/elastic/elasticsearch.git"
