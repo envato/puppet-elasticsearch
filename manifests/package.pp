@@ -20,17 +20,10 @@ class elasticsearch::package(
   }
 
   # TODO turn this into a proper puppet definition if we have more plugins
-  $es_plugin_cmd = "${boxen::config::homebrewdir}/bin/plugin"
-  $javascript_plugin = 'elasticsearch/elasticsearch-lang-javascript/2.4.1'
-  exec { "${es_plugin_cmd} --install ${javascript_plugin}":
-    unless  => "${es_plugin_cmd} --list | grep javascript",
-    require => Package[$package],
-    notify  => Service['dev.elasticsearch'],
-  }
-
-  $es_head_plugin = 'mobz/elasticsearch-head'
-  exec { "${es_plugin_cmd} --install ${es_head_plugin}":
-    unless  => "${es_plugin_cmd} --list | grep head",
+  $es_plugin_cmd = "${boxen::config::homebrewdir}/bin/elasticsearch-plugin"
+  $javascript_plugin = 'lang-javascript'
+  exec { "${es_plugin_cmd} install ${javascript_plugin}":
+    unless  => "${es_plugin_cmd} list | grep javascript",
     require => Package[$package],
     notify  => Service['dev.elasticsearch'],
   }
